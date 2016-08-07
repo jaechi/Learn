@@ -1,0 +1,30 @@
+
+edit DataSource.groovy
+update dataSource {
+	dbcreate = "update"
+
+
+psql
+psql (9.5.3)
+Type "help" for help.
+
+postgres=# \d
+No relations found.
+postgres=# CREATE USER data WITH PASSWORD 'password'
+postgres-# ;
+CREATE ROLE
+postgres=# CREATE DATABASE hellodata OWNER data;
+CREATE DATABASE
+postgres=#
+
+copy the JDBC driver jar into grails project lib directory
+
+Edit /var/lib/pgsql/data/pg_hba.conf
+change peer to md5
+# "local" is for Unix domain socket connections only
+#local   all             all                                     peer
+local   all             all                                     md5
+
+Change ident to md5
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
